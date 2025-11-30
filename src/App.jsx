@@ -1,12 +1,15 @@
 import React from 'react';
 import { FinanceProvider } from './contexts/FinanceContext';
 import Dashboard from './components/Dashboard';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   return (
-    <FinanceProvider>
-      <Dashboard />
-    </FinanceProvider>
+    <ErrorBoundary>
+      <FinanceProvider>
+        <Dashboard />
+      </FinanceProvider>
+    </ErrorBoundary>
   );
 }
 
