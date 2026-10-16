@@ -6,7 +6,7 @@ import {
   getIncomeByMonth,
   initializeDefaultCategories
 } from '../lib/db';
-import { seedNovemberData } from '../lib/db/seedData';
+import { seedInitialData } from '../lib/db/seedData';
 
 const FinanceContext = createContext();
 
@@ -81,8 +81,8 @@ export function FinanceProvider({ children }) {
         // Initialize default categories if needed
         await initializeDefaultCategories();
 
-        // Seed November data if this is first run
-        await seedNovemberData();
+        // Load bundled data batches (November 2025, September 2026) that this browser doesn't have yet
+        await seedInitialData();
 
         // Load all expenses and income
         const expenses = await getAllExpenses();
